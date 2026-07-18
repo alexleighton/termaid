@@ -1,0 +1,15 @@
+sequenceDiagram
+ participant A
+ participant B
+ participant C
+ note over A,C: begin the whole flow
+ loop retries
+  A->>B: try
+  alt ok
+   B-->>A: yes
+  else fail
+   B--xA: no
+  end
+ end
+ A->>A: reflect
+ note right of C: done

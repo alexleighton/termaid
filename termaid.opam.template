@@ -1,0 +1,4 @@
+# Voluntary AI disclosure — https://github.com/avsm/ocaml-ai-disclosure
+x-ai-disclosure: "ai-generated"
+x-ai-model: "claude-opus-4-8"
+x-ai-provider: "Anthropic"

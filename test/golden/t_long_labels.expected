@@ -1,0 +1,21 @@
+  ┌───────────────────────┐
+  │    Initialize the     │
+  │      distributed      │
+  │ configuration service │
+  │  and warm all caches  │
+  └───────────┬───────────┘
+              │
+              ▼
+ ┌─────────────────────────┐
+ │ Validate every incoming │
+ │   request against the   │
+ │  access control policy  │
+ └────────────┬────────────┘
+              │
+              ▼
+┌──────────────────────────┐
+│     Emit structured      │
+│     telemetry to the     │
+│ aggregation pipeline for │
+│      later analysis      │
+└──────────────────────────┘

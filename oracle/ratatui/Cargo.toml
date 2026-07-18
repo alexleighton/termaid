@@ -1,0 +1,13 @@
+# No-op stand-in for the `ratatui` crate. The vendored mermaid.rs pulls in
+# ratatui only to build styled `Line`/`Span` output; the oracle consumes the
+# plain-text lines exclusively, so these types can be empty markers. Mirrors just
+# the surface mermaid.rs uses: Style (Default/Copy + add_modifier), Modifier
+# (ITALIC), and Span/Line with the same constructors/From impls ratatui exposes.
+[package]
+name = "ratatui"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "src/lib.rs"

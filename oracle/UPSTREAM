@@ -1,0 +1,12 @@
+# Provenance of the vendored Rust source at oracle/src/mermaid.rs.
+#
+# This is the upstream reference the OCaml port tracks. scripts/check_upstream.sh
+# compares the pinned git blob hash below against the current file on the
+# upstream default branch (via `gh`) and reports any drift.
+#
+# When a newer mermaid.rs is pulled into the oracle, update `commit` and `blob`
+# here to match (the script prints the new values on a detected change).
+repo=xai-org/grok-build
+path=crates/codegen/xai-grok-markdown/src/mermaid.rs
+commit=b189869b7755d2b482969acf6c92da3ecfeffd36
+blob=61d17f8d92644d99a7dde38d7f0d02444d153afd

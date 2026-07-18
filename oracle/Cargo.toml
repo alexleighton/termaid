@@ -1,0 +1,23 @@
+# Oracle: builds the vendored upstream `mermaid.rs` into a stdin->box-art filter,
+# used to generate golden test fixtures and answer edge-case questions during the
+# OCaml port. NOT part of the opam package; requires a Rust toolchain.
+#
+# ratatui is replaced by a local no-op shim (only the plain-text output path
+# matters here); unicode-width is the real crate, pinned to the version the
+# upstream workspace uses, so box widths match byte-for-byte.
+[package]
+name = "termaid-oracle"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "termaid-oracle"
+path = "src/main.rs"
+
+[dependencies]
+unicode-width = "0.2"
+ratatui = { path = "ratatui" }
+
+# Stand alone; do not get adopted into any parent cargo workspace.
+[workspace]

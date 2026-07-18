@@ -1,0 +1,10 @@
+ ┌───────────────────────┐
+ │ Check if the user has │
+ │ permission to access  │
+ │       resource        │
+ └───────────┬───────────┘
+             │
+             ▼
+         ┌──────┐
+         │ Done │
+         └──────┘

@@ -1,0 +1,5 @@
+(executable
+ (name main)
+ (public_name termaid)
+ (package termaid)
+ (libraries termaid))

@@ -1,0 +1,22 @@
+termaid
+Copyright 2026 Alex Leighton
+
+This product includes software developed by SpaceXAI (xai-org).
+
+  Copyright 2023-2026 SpaceXAI
+
+This project is an OCaml translation of the Rust terminal Mermaid renderer
+`mermaid.rs` from the xai-org/grok-build repository:
+
+  https://github.com/xai-org/grok-build/blob/b189869b7755d2b482969acf6c92da3ecfeffd36/crates/codegen/xai-grok-markdown/src/mermaid.rs
+
+The original is licensed under the Apache License, Version 2.0 (see LICENSE).
+The OCaml port re-implements its behavior in a new language; the diagram
+parsing, layout, and box-drawing logic derive from that original work.
+
+Modifications from the original include (non-exhaustive):
+  - Translation from Rust to OCaml.
+  - Removal of the ratatui dependency: styled output is exposed as a
+    TUI-agnostic (class-tagged span) model instead of ratatui Line/Span/Style.
+  - Adaptation of Unicode width handling to uucp/uutf.
+  - Repackaging as an opam library with its own test suites.

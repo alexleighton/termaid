@@ -1,0 +1,11 @@
+# Dune build output
+_build/
+
+# Project-local opam switch
+_opam/
+
+# dune @install artifact
+*.install
+
+# Rust oracle build output
+/oracle/target/

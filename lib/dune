@@ -1,0 +1,4 @@
+(library
+ (name termaid)
+ (public_name termaid)
+ (libraries uutf uucp))

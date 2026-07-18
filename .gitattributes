@@ -1,0 +1,13 @@
+# Keep dev-only tooling out of the published source tarball.
+#
+# Use /** so the attribute is set on every nested file, not just the directory:
+# `git archive` special-cases a directory `export-ignore`, but dune-release
+# resolves the attribute per file (git check-attr), where a bare `dir/` pattern
+# does not cascade. Matching `dir/**` (plus the dir itself) satisfies both.
+#
+# Neither the Rust oracle nor the maintenance scripts is needed to build, test,
+# or use the package; they stay in the repo for contributors.
+oracle export-ignore
+oracle/** export-ignore
+scripts export-ignore
+scripts/** export-ignore

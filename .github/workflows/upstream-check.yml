@@ -1,0 +1,72 @@
+name: Upstream check
+
+# Weekly check for changes to the upstream mermaid.rs that the oracle vendors.
+# On a detected change it opens (or updates) a tracking issue and fails the run
+# so the change surfaces via GitHub's normal notifications. Read-only w.r.t. the
+# repo contents; see scripts/check_upstream.sh and oracle/UPSTREAM.
+
+on:
+  schedule:
+    # Mondays 06:17 UTC (off the top of the hour; cron here is best-effort).
+    - cron: "17 6 * * 1"
+  # Allow an on-demand run from the Actions tab.
+  workflow_dispatch:
+
+# Read the repo; open/update an issue on drift.
+permissions:
+  contents: read
+  issues: write
+
+# Never run two of these at once.
+concurrency:
+  group: upstream-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check upstream mermaid.rs
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          ./scripts/check_upstream.sh | tee report.txt
+          echo "status=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Open or update tracking issue
+        if: steps.check.outputs.status == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Upstream mermaid.rs has changed"
+          {
+            echo "The vendored \`oracle/src/mermaid.rs\` no longer matches upstream."
+            echo "Run \`scripts/check_upstream.sh\` locally to inspect the diff and adopt the new version."
+            echo
+            echo '```'
+            head -c 50000 report.txt
+            echo '```'
+          } > body.md
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file body.md
+          else
+            gh issue create --title "$title" --body-file body.md
+          fi
+
+      - name: Fail the run if upstream changed
+        if: steps.check.outputs.status == '1'
+        run: |
+          echo "::error::Upstream mermaid.rs has changed — see the tracking issue."
+          exit 1
+
+      - name: Fail the run on a check error
+        if: steps.check.outputs.status != '0' && steps.check.outputs.status != '1'
+        run: |
+          echo "::error::check_upstream.sh errored (status ${{ steps.check.outputs.status }})."
+          exit 1

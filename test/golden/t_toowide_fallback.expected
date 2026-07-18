@@ -1,0 +1,29 @@
+╭ mermaid: graph ──╮
+│ graph TD         │
+│  Root --> C0     │
+│  Root --> C1     │
+│  Root --> C2     │
+│  Root --> C3     │
+│  Root --> C4     │
+│  Root --> C5     │
+│  Root --> C6     │
+│  Root --> C7     │
+│  Root --> C8     │
+│  Root --> C9     │
+│  Root --> C10    │
+│  Root --> C11    │
+│  Root --> C12    │
+│  Root --> C13    │
+│  Root --> C14    │
+│  Root --> C15    │
+│  Root --> C16    │
+│  Root --> C17    │
+│  Root --> C18    │
+│  Root --> C19    │
+│  Root --> C20    │
+│  Root --> C21    │
+│  Root --> C22    │
+│  Root --> C23    │
+╰──────────────────╯
+This diagram is too wide to display here
+— open the image to view it in full.

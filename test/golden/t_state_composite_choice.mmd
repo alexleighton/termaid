@@ -1,0 +1,9 @@
+stateDiagram-v2
+ state Big {
+  [*] --> Inner
+  state ch <<choice>>
+  Inner --> ch
+  ch --> Left: x
+  ch --> Right: y
+ }
+ Big --> Done
