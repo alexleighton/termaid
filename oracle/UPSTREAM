@@ -8,5 +8,5 @@
 # here to match (the script prints the new values on a detected change).
 repo=xai-org/grok-build
 path=crates/codegen/xai-grok-markdown/src/mermaid.rs
-commit=b189869b7755d2b482969acf6c92da3ecfeffd36
-blob=61d17f8d92644d99a7dde38d7f0d02444d153afd
+commit=bc7f02eddd3d84085849dc19ed216f11c23b0571
+blob=73691433ac387d6d8fd1b023fbe976bcded70d3f
